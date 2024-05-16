@@ -35,7 +35,7 @@ def all_doctors():
 def doctor_by_id(id):
     doctor = Doctor.query.where(Doctor.id == id).first()
     if doctor:
-        return doctor.to_dict(), 200
+        return doctor.to_dict(rules = ['-appointments', '-id', '-patients']), 200
     else:
         return {'error': 'Not found'}, 404
     
